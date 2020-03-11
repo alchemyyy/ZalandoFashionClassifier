@@ -21,13 +21,13 @@ function [] = main()
     %disp(double(trainLabels(10)));
 
     %training parameters
-    trainingSetLength = 2000;
+    trainingSetLength = 1000;
     %testSetLength = 1000;
     numberOfEpochs = 100000;
     
     %learning rate parameters
     learnRate = 0.02;
-    VLRMSETriggerPercentage = 0.08;
+    VLRMSETriggerPercentage = 0.004;
     VLRDecreasePercentage = 0.25;
     VLRIncreasePercentage = 0.005;
 
@@ -47,9 +47,9 @@ function [] = main()
     lowestError = 100;
     
     %load saved network. IF NOT LOADED OLD NETWORK IS LOST
-    %net = evalin('base','bestnetwork');
-    %lowestError = evalin('base','lowestError');
-    %MSE_old = evalin('base','lowestErrorMSE');
+    net = evalin('base','bestnetwork');
+    lowestError = evalin('base','lowestError');
+    MSE_old = evalin('base','lowestErrorMSE');
     %end load saved network
     %because matlab is stupid, we can't use a for loop. because if we need to backtrack our epoch (for VLR) it won't let us.
     epoch = 1;
